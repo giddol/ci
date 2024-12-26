@@ -7,7 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('board', 'Board::index');
 $routes->get('board/view/(:num)', 'Board::view/$1');
-$routes->get('board/download/(:num)', 'Board::download/$1');
 $routes->get('login', 'Board::login');
 $routes->post('login', 'Board::loginAction');
 $routes->get('logout', 'Board::logout');

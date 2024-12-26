@@ -321,24 +321,6 @@ class Board extends BaseController
         exit;
     }
 
-
-    // 파일 다운로드
-    public function download($fileId)
-    {
-        $file = $this->boardModel->getFileById($fileId);
-
-        if (!$file) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('파일을 찾을 수 없습니다.');
-        }
-
-        $filePath = WRITEPATH . 'uploads/' . $file['file_name'];
-        if (!is_file($filePath)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('파일을 찾을 수 없습니다.');
-        }
-
-        return $this->response->download($filePath, null)->setFileName($file['file_name']);
-    }
-
     public function delete($id)
     {
         if ($this->boardModel->deletePost($id)) {
@@ -349,7 +331,6 @@ class Board extends BaseController
             exit;
         }
     }
-
 
 
     function formatFileSize($bytes)
